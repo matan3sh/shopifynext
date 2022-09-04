@@ -2,7 +2,7 @@ const productConnection = `
   pageInfo {
       hasNextPage
       hasPreviousPage
-    }
+  }
   edges {
     node {
       id
