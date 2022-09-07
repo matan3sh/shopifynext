@@ -5,7 +5,7 @@ const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
   framework: {
-    name: "shopify",
+    name: "shopify_local",
   },
   i18n: {
     locales: ["en-US", "es"],
