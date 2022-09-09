@@ -1,14 +1,19 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-import { Layout } from "@components/common";
+import { FC, PropsWithChildren } from "react";
 
-function MyApp({ Component, pageProps }: AppProps) {
+const Noop: FC<PropsWithChildren> = ({ children }) => <>{children}</>;
+
+function MyApp({
+  Component,
+  pageProps,
+}: AppProps & { Component: { Layout: FC<PropsWithChildren> } }) {
+  const Layout = Component.Layout ?? Noop;
+
   return (
-    <>
-      <Layout>
-        <Component {...pageProps} />
-      </Layout>
-    </>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   );
 }
 
