@@ -1,10 +1,6 @@
-import { ReactNode } from "react";
+import { FC, PropsWithChildren } from "react";
 
-interface IProps {
-  children: ReactNode;
-}
-
-const Layout = ({ children }: IProps) => {
+const Layout: FC<PropsWithChildren> = ({ children }) => {
   return <div className="layout">{children}</div>;
 };
 
