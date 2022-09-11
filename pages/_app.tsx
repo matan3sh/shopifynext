@@ -1,4 +1,4 @@
-import "../styles/globals.css";
+import "@assets/main.css";
 import type { AppProps } from "next/app";
 import { FC, PropsWithChildren } from "react";
 
