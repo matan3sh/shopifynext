@@ -5,7 +5,9 @@ import styles from "./Layout.module.css";
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={styles.root}>
-      <main className="fit">{children}</main>
+      <main style={{ color: "var(--primary)" }} className="fit">
+        {children}
+      </main>
     </div>
   );
 };
