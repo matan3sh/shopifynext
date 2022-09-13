@@ -4,9 +4,9 @@ import styles from "./Layout.module.css";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
-    <>
-      <main className={styles.root}>{children}</main>
-    </>
+    <div className={styles.root}>
+      <main className="fit">{children}</main>
+    </div>
   );
 };
 

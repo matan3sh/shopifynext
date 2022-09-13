@@ -2,7 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
-.root {
-  @apply h-full mx-auto;
-  max-width: 2460px;
+@layer components {
+  .fit {
+    min-height: calc(100vh - 88px);
+  }
 }
