@@ -20,8 +20,8 @@ const ProductCard: FC<IProps> = ({ product }) => {
 
         {product.images && (
           <Image
-            alt={product.name ?? "Product Image"}
-            src={placeholderImage}
+            alt={product.name ?? "Product image"}
+            src={product.images[0].url ?? placeholderImage}
             height={540}
             width={540}
             quality="85"
