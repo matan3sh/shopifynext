@@ -15,6 +15,7 @@ const ProductCard: FC<IProps> = ({ product }) => {
   return (
     <Link href={`/product/${product.slug}`}>
       <a className={styles.root}>
+        <div className={styles.productBg}></div>
         <div className={styles.productTag}>
           <h3 className={styles.productTitle}>
             <span>{product.name}</span>
