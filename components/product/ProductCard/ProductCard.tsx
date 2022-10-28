@@ -25,6 +25,7 @@ const ProductCard: FC<IProps> = ({ product }) => {
 
         {product.images && (
           <Image
+            className={styles.productImage}
             alt={product.name ?? "Product image"}
             src={product.images[0].url ?? placeholderImage}
             height={540}
