@@ -15,7 +15,7 @@ const Hero: FC<IProps> = ({ headline, description }) => {
       <Container>
         <div className={styles.root}>
           <h2 className={styles.headline}>{headline}</h2>
-          <div>
+          <div className="flex-1 max-w-4xl">
             <p className={styles.description}>{description}</p>
             <Link href="/">
               <a className={styles.link}>Read it here</a>
