@@ -23,7 +23,6 @@ const Marquee: FC<Props> = ({
 
   return (
     <div className={rootClassName}>
-      {/* and this  */}
       <ReactFastMarquee
         speed={50}
         gradient={gradient}
