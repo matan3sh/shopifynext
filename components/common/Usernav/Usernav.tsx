@@ -6,13 +6,13 @@ import { useUI } from "@components/ui/context";
 import styles from "./Usernav.module.css";
 
 const Usernav: FC = () => {
-  const ui = useUI();
+  const { openSidebar } = useUI();
 
   return (
     <nav>
       <ul className={styles.list}>
         <li className={styles.item}>
-          <Cart onClick={ui.setSidebarOpen} />
+          <Cart onClick={openSidebar} />
         </li>
         <li className={styles.item}>
           <Link href="/wishlist">
