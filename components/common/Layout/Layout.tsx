@@ -12,7 +12,7 @@ const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <div className={styles.root}>
       <Navbar />
-      <Sidebar>
+      <Sidebar isOpen={ui.isSidebarOpen}>
         <CartSidebar />
       </Sidebar>
       <main className="fit">{children}</main>

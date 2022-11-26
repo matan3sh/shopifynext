@@ -1,11 +1,10 @@
-import { FC } from "react";
+import { FC, PropsWithChildren } from "react";
 
-interface Props {
-  children: any;
+interface Props extends PropsWithChildren {
+  isOpen: boolean;
 }
 
-const Sidebar: FC<Props> = ({ children }) => {
-  const isOpen = true;
+const Sidebar: FC<Props> = ({ children, isOpen }) => {
   return (
     <>
       {isOpen ? (
