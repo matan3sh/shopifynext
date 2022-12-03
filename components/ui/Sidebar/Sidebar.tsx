@@ -22,7 +22,6 @@ const Sidebar: FC<Props> = ({ children, isOpen, onClose }) => {
         enableBodyScroll(ref.current);
       }
     }
-
     return () => {
       clearAllBodyScrollLocks();
     };
