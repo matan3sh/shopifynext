@@ -6,6 +6,7 @@ import {
 import { Layout } from "@components/common";
 import { getAllProductsPaths, getProduct } from "@framework/product";
 import { getConfig } from "@framework/api/config";
+import { Product } from "@common/types/product";
 
 export default function ProductDetailPage({
   product,
@@ -31,7 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async ({
   params,
-}: GetStaticPropsContext<{ slug: string }>) => {
+}: GetStaticPropsContext<Pick<Product, "slug">>) => {
   const config = getConfig();
   const { product } = await getProduct(config);
   return {
