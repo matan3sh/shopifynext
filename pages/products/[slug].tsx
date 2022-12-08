@@ -11,12 +11,7 @@ import { Product } from "@common/types/product";
 export default function ProductDetailPage({
   product,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <div>
-      <div>{product.name}</div>
-      <div>{product.slug}</div>
-    </div>
-  );
+  return <div>{JSON.stringify(product, null, 2)}</div>;
 }
 
 ProductDetailPage.Layout = Layout;
@@ -24,6 +19,7 @@ ProductDetailPage.Layout = Layout;
 export const getStaticPaths: GetStaticPaths = async () => {
   const config = getConfig();
   const { products } = await getAllProductsPaths(config);
+
   return {
     paths: products.map((product) => ({ params: { slug: product.slug } })),
     fallback: false,
@@ -34,7 +30,11 @@ export const getStaticProps = async ({
   params,
 }: GetStaticPropsContext<Pick<Product, "slug">>) => {
   const config = getConfig();
-  const { product } = await getProduct(config);
+  const { product } = await getProduct({
+    config,
+    variables: { slug: params?.slug },
+  });
+
   return {
     props: {
       product,
