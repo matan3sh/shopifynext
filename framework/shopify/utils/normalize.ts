@@ -1,4 +1,4 @@
-import { Product } from "@common/types/product";
+import { Product, ProductOptionsValues } from "@common/types/product";
 import {
   ImageEdge,
   MoneyV2,
@@ -28,7 +28,7 @@ const normalizeProductOption = ({
     id,
     displayName,
     values: values.map((value) => {
-      let output: { label: string; hexColor?: string } = {
+      let output: ProductOptionsValues = {
         label: value,
       };
       if (displayName.match(/colou?r/gi)) {
