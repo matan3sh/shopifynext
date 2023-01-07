@@ -49,7 +49,12 @@ const ProductView: FC<Props> = ({ product }) => {
             </div>
           </section>
           <div>
-            <Button>Add to Cart</Button>
+            <Button
+              className={styles.button}
+              onClick={() => alert("Adding to Cart")}
+            >
+              Add to Cart
+            </Button>
           </div>
         </div>
       </div>
