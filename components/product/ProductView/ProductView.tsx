@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useState } from "react";
 import cn from "classnames";
 import { Button, Container } from "@components/ui";
 import Image from "next/image";
@@ -10,7 +10,14 @@ interface Props {
   product: Product;
 }
 
+type AvailableChoices = "color" | "size";
+type Choices = {
+  [T in AvailableChoices]: string;
+};
+
 const ProductView: FC<Props> = ({ product }) => {
+  const [choices, setChoices] = useState<Choices>({ color: "", size: "" });
+
   return (
     <Container>
       <div className={cn(styles.root, "fit", "mb-5")}>
@@ -50,6 +57,13 @@ const ProductView: FC<Props> = ({ product }) => {
                       label={value.label}
                       color={value.hexColor}
                       variant={option.displayName}
+                      onClick={() => {
+                        setChoices({
+                          ...choices,
+                          [option.displayName.toLowerCase()]:
+                            value.label.toLowerCase(),
+                        });
+                      }}
                     />
                   ))}
                 </div>
