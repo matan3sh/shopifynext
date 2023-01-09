@@ -1,5 +1,6 @@
 import { FC } from "react";
 import cn from "classnames";
+import { isDark } from "@lib/colors";
 import { Check } from "@components/icons";
 
 import styles from "./Swatch.module.css";
@@ -20,6 +21,7 @@ const Swatch: FC<Props> = ({ color, label, variant, active, ...rest }) => {
     [styles.active]: active,
     [styles.color]: color,
     [styles.size]: variant === "size",
+    [styles.dark]: color && isDark(color),
   });
 
   return (
