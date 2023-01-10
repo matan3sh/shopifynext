@@ -1,12 +1,16 @@
 import { FC, useState } from "react";
-import cn from "classnames";
-import { Button, Container } from "@components/ui";
 import Image from "next/image";
+import cn from "classnames";
+
+import { Button, Container } from "@components/ui";
 import { Product } from "@common/types/product";
-import styles from "./ProductView.module.css";
 import { ProductSlider, Swatch } from "@components/product";
-import { Choices, AvailableChoices, getVariant } from "../helpers";
 import { useUI } from "@components/ui/context";
+import useAddItem from "@framework/cart/use-add-item";
+
+import { Choices, AvailableChoices, getVariant } from "../helpers";
+
+import styles from "./ProductView.module.css";
 
 interface Props {
   product: Product;
@@ -15,6 +19,7 @@ interface Props {
 const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({ color: "", size: "" });
   const { openSidebar } = useUI();
+  const addItem = useAddItem();
 
   const variant = getVariant(product, choices);
 
@@ -26,7 +31,7 @@ const ProductView: FC<Props> = ({ product }) => {
         variantOptions: variant?.options,
       };
 
-      alert(JSON.stringify(item));
+      alert(JSON.stringify(addItem(item)));
       openSidebar();
     } catch (error) {}
   };
