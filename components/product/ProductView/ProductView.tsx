@@ -5,6 +5,7 @@ import cn from "classnames";
 import { Button, Container } from "@components/ui";
 import { Product } from "@common/types/product";
 import { ProductSlider, Swatch } from "@components/product";
+import { useApiProvider } from "@common";
 import { useUI } from "@components/ui/context";
 import useAddItem from "@framework/cart/use-add-item";
 
@@ -18,6 +19,8 @@ interface Props {
 
 const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({ color: "", size: "" });
+
+  const api = useApiProvider();
   const { openSidebar } = useUI();
   const addItem = useAddItem();
 
