@@ -5,18 +5,17 @@ import Image from "next/image";
 import { Product } from "@common/types/product";
 import styles from "./ProductView.module.css";
 import { ProductSlider, Swatch } from "@components/product";
+import { Choices, AvailableChoices, getVariant } from "../helpers";
 
 interface Props {
   product: Product;
 }
 
-type AvailableChoices = "color" | "size";
-type Choices = {
-  [T in AvailableChoices]: string;
-};
-
 const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({ color: "", size: "" });
+
+  const variant = getVariant(product, choices);
+  console.log(variant);
 
   return (
     <Container>
