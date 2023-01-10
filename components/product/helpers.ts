@@ -6,20 +6,16 @@ export type Choices = {
 };
 
 export function getVariant(product: Product, choices: Choices) {
-  const variant = product.variants.find((variant) => {
-    const isMatchingChoice = variant.options.every((variantOption) => {
-      const optionName = variantOption.displayName.toLowerCase();
+  return product.variants.find((variant) => {
+    return variant.options.every((variantOption) => {
+      const optionName =
+        variantOption.displayName.toLowerCase() as AvailableChoices;
+
       if (optionName in choices) {
-        if (
-          choices[optionName as AvailableChoices] ===
-          variantOption.values[0].label
-        ) {
-          return true;
-        }
+        return choices[optionName] === variantOption.values[0].label;
       }
+
       return false;
     });
-    return isMatchingChoice;
   });
-  return variant;
 }
