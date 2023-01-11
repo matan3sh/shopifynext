@@ -21,6 +21,7 @@ const ProductView: FC<Props> = ({ product }) => {
   const [choices, setChoices] = useState<Choices>({ color: "", size: "" });
 
   const api = useApiProvider();
+  console.log(api);
   const { openSidebar } = useUI();
   const addItem = useAddItem();
 
