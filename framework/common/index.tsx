@@ -1,15 +1,26 @@
-import { createContext, ReactNode, useContext } from "react";
-import { ApiConfig } from "./types/api";
+import { createContext, ReactNode, useContext, useMemo } from "react";
+import { ApiConfig, ApiHooks } from "./types/api";
 
 interface ApiProviderProps {
   children: ReactNode | ReactNode[];
-  config: ApiConfig | { testKey: string };
+  config: ApiConfig;
+  hooks: ApiHooks;
 }
 
 export const ApiContext = createContext({});
 
-export const ApiProvider = ({ children, config }: ApiProviderProps) => {
-  return <ApiContext.Provider value={config}>{children}</ApiContext.Provider>;
+export const ApiProvider = ({ children, config, hooks }: ApiProviderProps) => {
+  const coreConfig = useMemo(
+    () => ({
+      fetcher: config.fetch,
+      hooks,
+    }),
+    [config.fetch, hooks]
+  );
+
+  return (
+    <ApiContext.Provider value={coreConfig}>{children}</ApiContext.Provider>
+  );
 };
 
 export const useApiProvider = () => {
