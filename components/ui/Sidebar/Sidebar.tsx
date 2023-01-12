@@ -15,7 +15,6 @@ const Sidebar: FC<Props> = ({ children, isOpen, onClose }) => {
 
   useEffect(() => {
     if (ref.current) {
-      console.log(ref.current);
       if (isOpen) {
         disableBodyScroll(ref.current);
       } else {

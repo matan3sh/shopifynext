@@ -3,12 +3,13 @@ import { useAddItem } from "@common/cart";
 export default useAddItem;
 
 export const handler = {
-  fetcher: () => {
-    console.log("Fetching Data!");
+  fetcher: (input: any) => {
+    return JSON.stringify(input) + "_MODIFIED";
   },
-  useHook: () => {
+  useHook: ({ fetch }: any) => {
     return (input: any) => {
-      return { output: JSON.stringify(input) + "_MODIFIED" };
+      const response = fetch(input);
+      return { output: response };
     };
   },
 };
