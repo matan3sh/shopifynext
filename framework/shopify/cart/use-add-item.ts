@@ -4,10 +4,11 @@ import { MutationHook } from "@common/types/hooks";
 export default useAddItem;
 
 export const handler: MutationHook = {
-  fetcher: async ({ fetch, input }) => {
-    const response = await fetch({
-      query: `query { hello }`,
-    });
+  fetcherOptions: {
+    query: `query { hello }`,
+  },
+  fetcher: async ({ fetch, options }) => {
+    const response = await fetch({ ...options });
     return response;
   },
   useHook: ({ fetch }) => {
